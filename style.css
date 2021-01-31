@@ -146,7 +146,7 @@ button:active {
 }
 
 #mode {
-  position: absolute;
+  position: fixed;
   bottom: 0;
   margin: 15px;
 }
