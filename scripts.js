@@ -1,5 +1,6 @@
 // Array with all searches
 let searches = [];
+let showError = true;
 
 // Event listener of the search button and selecting the input
 let searchButton = document.getElementById("searchbutton");
@@ -23,6 +24,7 @@ function getWeatherData(location) {
       processData(json);
     } else {
       createError(json.message);
+      searchButton.disabled = false;
     }
   });
 }
@@ -44,18 +46,21 @@ function processData(json) {
 
 // Display an error below the searchbar
 function createError(message) {
-  let search = document.getElementById("search");
-  let paragraph = document.createElement("p");
-  paragraph.id = "error";
-  paragraph.textContent = "Oops, an error occured: " + message;
-  search.appendChild(paragraph);
-  setTimeout(() => {
-    paragraph.classList.toggle("fade");
-  }, 2000);
-  setTimeout(() => {
-    search.removeChild(paragraph);
-  }, 2200);
-  searchButton.disabled = false;
+  if (showError) {
+    showError = false;
+    let search = document.getElementById("search");
+    let paragraph = document.createElement("p");
+    paragraph.id = "error";
+    paragraph.textContent = "Oops, an error occured: " + message;
+    search.appendChild(paragraph);
+    setTimeout(() => {
+      paragraph.classList.toggle("fade");
+    }, 2000);
+    setTimeout(() => {
+      search.removeChild(paragraph);
+      showError = true;
+    }, 2200);
+  }
 }
 
 // Render all data from the searches array
@@ -112,3 +117,26 @@ async function getGif(url) {
   const data = await response.json();
   return data.data.images.original.url;
 }
+
+// Code for dark theme/light theme
+let theme = "light";
+let themebutton = document.getElementById("theme");
+let root = document.documentElement;
+let topicon = document.getElementById("topicon");
+themebutton.addEventListener("click", function () {
+  if (theme == "light") {
+    root.style.setProperty("--background-color", "#121212");
+    root.style.setProperty("--inputborder-color", "#ffffff");
+    root.style.setProperty("--text-color", "#ffffff");
+    themebutton.innerHTML = "Light Theme";
+    topicon.src = "http://openweathermap.org/img/wn/02n@2x.png";
+    theme = "dark";
+  } else {
+    root.style.setProperty("--background-color", "#ffffff");
+    root.style.setProperty("--inputborder-color", "rgb(72, 72, 74)");
+    root.style.setProperty("--text-color", "#000000");
+    themebutton.innerHTML = "Dark Theme";
+    topicon.src = "http://openweathermap.org/img/wn/02d@2x.png";
+    theme = "light";
+  }
+});

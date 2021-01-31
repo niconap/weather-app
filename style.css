@@ -5,6 +5,9 @@
   outline: none;
   margin: auto;
   text-align: center;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  transition: color 0.2s ease, background-color 0.2s ease;
 }
 
 header {
@@ -64,7 +67,7 @@ input,
 textarea {
   font-style: italic;
   border: 3px solid;
-  border-color: rgb(72, 72, 74);
+  border-color: var(--inputborder-color);
   transition: 0.25s border-color, 0.25s box-shadow, 0.25s padding;
   border-radius: 10px;
   padding: 3px;
@@ -128,10 +131,28 @@ button:active {
   grid-area: gif;
 }
 
+#historicsearch p {
+  margin: 6px;
+}
+
 #historicsearch #location {
   grid-area: location;
+  margin-bottom: 5px;
+  font-size: 20px;
 }
 
 #historicsearch #data {
   grid-area: data;
+}
+
+#mode {
+  position: absolute;
+  bottom: 0;
+  margin: 15px;
+}
+
+:root {
+  --background-color: #fff;
+  --inputborder-color: rgb(72, 72, 74);
+  --text-color: #000000;
 }
