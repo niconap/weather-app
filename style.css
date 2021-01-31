@@ -1,0 +1,137 @@
+@import url("https://fonts.googleapis.com/css2?family=Spartan:ital,wght@0,300;0,400;1,300;1,400&family=Spartan:wght@700&display=swap");
+
+* {
+  font-family: Spartan, serif;
+  outline: none;
+  margin: auto;
+  text-align: center;
+}
+
+header {
+  padding: 20px;
+  margin-bottom: 70px;
+}
+
+header #search {
+  float: right;
+  width: 350px;
+}
+
+#search p {
+  color: rgb(236, 110, 76);
+  opacity: 1;
+  transition: opacity 0.2s ease;
+}
+
+#search p.fade {
+  opacity: 0;
+}
+
+#search input {
+  margin-bottom: 10px;
+}
+
+header #topicon {
+  float: left;
+  max-width: 50px;
+  max-height: 50px;
+}
+
+header h1 {
+  float: left;
+}
+
+#weathertext {
+  display: inline-block;
+  color: rgb(236, 110, 76);
+}
+
+#apptext {
+  display: inline-block;
+  color: rgb(72, 72, 74);
+}
+
+h1 {
+  font-family: Spartan, sans-serif;
+}
+
+h2 {
+  font-family: Spartan, serif;
+  font-style: italic;
+}
+
+input,
+textarea {
+  font-style: italic;
+  border: 3px solid;
+  border-color: rgb(72, 72, 74);
+  transition: 0.25s border-color, 0.25s box-shadow, 0.25s padding;
+  border-radius: 10px;
+  padding: 3px;
+}
+
+input:focus,
+textarea:focus {
+  border-color: rgb(236, 110, 76);
+  box-shadow: 0px 0px 5px 0px rgb(94, 94, 94);
+  padding: 5px;
+}
+
+button {
+  background-color: transparent;
+  border: 3px solid;
+  color: rgb(236, 110, 76);
+  font-family: Spartan, serif;
+  padding: 5px;
+  border-radius: 10px;
+  transition: 0.2s ease;
+  font-weight: 700;
+}
+
+button:hover {
+  background-color: rgb(236, 110, 76);
+  color: white;
+  border: 3px solid rgb(236, 110, 76);
+  cursor: pointer;
+  box-shadow: 0px 0px 5px 0px rgb(94, 94, 94);
+}
+
+button:active {
+  background-color: rgb(214, 98, 66);
+  border: 3px solid rgb(214, 98, 66);
+}
+
+#historicsearch {
+  margin: auto;
+  display: block;
+  box-shadow: 0px 0px 5px 0px rgb(94, 94, 94);
+  padding: 20px;
+  border-radius: 20px;
+  display: grid;
+  margin-top: 10px;
+  grid-template-areas:
+    "gif location"
+    "gif data";
+  max-width: 350px;
+  transition: opacity 0.2s ease;
+  opacity: 1;
+}
+
+#historicsearch.fade {
+  opacity: 0;
+}
+
+#historicsearch img {
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+  grid-area: gif;
+}
+
+#historicsearch #location {
+  grid-area: location;
+}
+
+#historicsearch #data {
+  grid-area: data;
+}

@@ -10,6 +10,7 @@ searchButton.addEventListener("click", () => {
 
 // Fetch the weather data and turn it into a JSON string
 function getWeatherData(location) {
+  searchButton.disabled = true;
   let url =
     "http://api.openweathermap.org/data/2.5/weather?q=" +
     location +
@@ -30,11 +31,12 @@ function getWeatherData(location) {
 function processData(json) {
   let data = {
     location: json.name + ", " + json.sys.country,
-    temp: Math.round(json.main.temp) - 273 + " ℃",
-    feels_like: Math.round(json.main.feels_like) - 273 + " ℃",
+    temp: Math.round(json.main.temp) - 273 + "°C",
+    feels_like: Math.round(json.main.feels_like) - 273 + "°C",
     humidity: json.main.humidity + "%",
     wind_speed: Math.round(json.wind.speed) + "MPH",
     description: json.weather[0].description,
+    icon: json.weather[0].icon,
   };
   searches = [data, ...searches];
   render();
@@ -48,8 +50,12 @@ function createError(message) {
   paragraph.textContent = "Oops, an error occured: " + message;
   search.appendChild(paragraph);
   setTimeout(() => {
-    search.removeChild(paragraph);
+    paragraph.classList.toggle("fade");
   }, 2000);
+  setTimeout(() => {
+    search.removeChild(paragraph);
+  }, 2200);
+  searchButton.disabled = false;
 }
 
 // Render all data from the searches array
@@ -63,26 +69,46 @@ function render() {
     location.textContent = search.location;
     location.id = "location";
     main.appendChild(location);
-    let description = document.createElement("description");
-    description.textContent = search.description;
+    let datadiv = document.createElement("div");
+    datadiv.id = "data";
+    let description = document.createElement("p");
+    description.textContent =
+      search.description.charAt(0).toUpperCase() + search.description.slice(1);
     description.id = "description";
-    main.appendChild(description);
+    datadiv.appendChild(description);
     let temp = document.createElement("p");
-    temp.textContent = search.temp;
+    temp.textContent = "Temperature: " + search.temp;
     temp.id = "temp";
-    main.appendChild(temp);
+    datadiv.appendChild(temp);
     let feels_like = document.createElement("p");
     feels_like.textContent = "Feels like: " + search.feels_like;
     feels_like.id = "feels_like";
-    main.appendChild(feels_like);
+    datadiv.appendChild(feels_like);
     let humidity = document.createElement("p");
     humidity.textContent = "Humidity: " + search.humidity;
     humidity.id = "humidity";
-    main.appendChild(humidity);
+    datadiv.appendChild(humidity);
     let wind_speed = document.createElement("p");
     wind_speed.textContent = "Wind speed: " + search.wind_speed;
     wind_speed.id = "wind_speed";
-    main.appendChild(wind_speed);
+    datadiv.appendChild(wind_speed);
+    main.appendChild(datadiv);
+    let icon = document.createElement("img");
+    icon.src = "http://openweathermap.org/img/wn/" + search.icon + "@2x.png";
+    icon.id = "icon";
+    main.appendChild(icon);
     container.appendChild(main);
+    main.classList.toggle("fade");
+    setTimeout(() => {
+      main.classList.toggle("fade");
+    }, 200);
   });
+  searchButton.disabled = false;
+}
+
+// Get a gif by searching for the description on GIPHY
+async function getGif(url) {
+  const response = await fetch(url, { mode: "cors" });
+  const data = await response.json();
+  return data.data.images.original.url;
 }
