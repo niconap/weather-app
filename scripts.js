@@ -13,7 +13,7 @@ searchButton.addEventListener("click", () => {
 function getWeatherData(location) {
   searchButton.disabled = true;
   let url =
-    "http://api.openweathermap.org/data/2.5/weather?q=" +
+    "https://api.openweathermap.org/data/2.5/weather?q=" +
     location +
     "&appid=25990e6ab787d143911d15e7f640d6cf";
   fetch(url, {
@@ -99,7 +99,7 @@ function render() {
     datadiv.appendChild(wind_speed);
     main.appendChild(datadiv);
     let icon = document.createElement("img");
-    icon.src = "http://openweathermap.org/img/wn/" + search.icon + "@2x.png";
+    icon.src = "https://openweathermap.org/img/wn/" + search.icon + "@2x.png";
     icon.id = "icon";
     main.appendChild(icon);
     container.appendChild(main);
@@ -129,14 +129,14 @@ themebutton.addEventListener("click", function () {
     root.style.setProperty("--inputborder-color", "#ffffff");
     root.style.setProperty("--text-color", "#ffffff");
     themebutton.innerHTML = "Light Theme";
-    topicon.src = "http://openweathermap.org/img/wn/02n@2x.png";
+    topicon.src = "https://openweathermap.org/img/wn/02n@2x.png";
     theme = "dark";
   } else {
     root.style.setProperty("--background-color", "#ffffff");
     root.style.setProperty("--inputborder-color", "rgb(72, 72, 74)");
     root.style.setProperty("--text-color", "#000000");
     themebutton.innerHTML = "Dark Theme";
-    topicon.src = "http://openweathermap.org/img/wn/02d@2x.png";
+    topicon.src = "https://openweathermap.org/img/wn/02d@2x.png";
     theme = "light";
   }
 });
