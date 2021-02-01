@@ -158,8 +158,9 @@ button:active {
 }
 
 @media screen and (max-width: 800px) {
-  #search {
+  header #search {
     margin-bottom: 20px;
+    float: none;
   }
 
   header {
@@ -179,16 +180,8 @@ button:active {
     top: 20px;
   }
 
-  #historicsearch {
-    margin-left: 15px;
-    margin-right: 15px;
-    margin-top: 15px;
-  }
-}
-
-@media screen and (max-width: 1200px) {
-  header #search {
-    float: none;
+  #history {
+    padding: 10px;
   }
 }
 
