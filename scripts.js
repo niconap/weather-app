@@ -140,3 +140,6 @@ themebutton.addEventListener("click", function () {
     theme = "light";
   }
 });
+
+// Render a default city
+getWeatherData("Amsterdam");

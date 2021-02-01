@@ -156,3 +156,49 @@ button:active {
   --inputborder-color: rgb(72, 72, 74);
   --text-color: #000000;
 }
+
+@media screen and (max-width: 800px) {
+  #search {
+    margin-bottom: 20px;
+  }
+
+  header {
+    margin-bottom: 10px;
+  }
+
+  header h1 {
+    float: none;
+    display: inline-block;
+    margin-bottom: 15px;
+  }
+
+  header #topicon {
+    float: none;
+    display: inline-block;
+    position: relative;
+    top: 20px;
+  }
+
+  #historicsearch {
+    margin-left: 15px;
+    margin-right: 15px;
+    margin-top: 15px;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  header #search {
+    float: none;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  header #search {
+    margin: auto;
+    max-width: 100%;
+  }
+
+  #title h1 {
+    font-size: 25px;
+  }
+}
