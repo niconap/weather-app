@@ -1,12 +1,9 @@
 # Weather App
 
-This is a simple weather app that let's you search for the weather on any location! Your search history will be displayed until you refresh the page. The project uses the OpenWeatherMap API.
+The live version of this project can be found [here](https://niconap.github.io/weather-app/).
 
-Skills shown in this project:
+## What is it?
+This is a weather app that let's you search for the weather on any location! The project uses the OpenWeatherMap API to fetch the weather data and displays it on the website. The website is responsive and has a dark theme as well. This project is part of The Odin Project's curriculum, the project description can be found [here](https://www.theodinproject.com/lessons/weather-app).
 
-- Using Promises
-- Using an API
-- Processing data from an API and displaying it
-- Using JavaScript
-- Using CSS
-- Using HTML
+## What is the purpose?
+The main focus of this project was using the `fetch()` API in JavaScript and using a third party API, in this case the one from OpenWeatherMap.
